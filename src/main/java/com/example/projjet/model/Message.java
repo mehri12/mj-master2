@@ -20,21 +20,14 @@ import java.util.Date;
 @NoArgsConstructor
 @ToString
 @Table(name = "Message")
-
-
+@Builder
 public class Message implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_mess;
     private String contenu;
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(nullable = false)
-    private Date dateTime;
-    @PrePersist
-    private void oncreate(){
-        dateTime=new Date();
-    }
+    private LocalDateTime dateTime=LocalDateTime.now();
     @ManyToOne
     @JoinColumn(name="id_recepteur")
     private Employee employee;

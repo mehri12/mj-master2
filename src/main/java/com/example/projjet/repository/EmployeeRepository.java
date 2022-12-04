@@ -13,9 +13,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
-    public Optional<Employee> findByNom (String nom);
+    public Employee findByNom (String nom);
+    List<Employee> findByMail(String mail);
 
-    @Query(value = " select e.tache_id,e.nom  from employee e  where  id = :employeeid"  , nativeQuery = true)
+
+    @Query(value = " select e.nom,e.age,e.mail from employee e  where  id = :employeeid"  , nativeQuery = true)
     List<List<String>> findByEmployeeId(@Param("employeeid") Long employeeid) ;
 
 

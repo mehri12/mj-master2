@@ -22,6 +22,10 @@ public class ProjetController {
 
 		return projetservice.list();
 	 }
+	 @GetMapping("/getemployeebyprojetid/{id}")
+	 public String findprojet(@PathVariable long id){
+		return projetservice.findprojetbyemployeeid(id);
+	 }
 	@PostMapping("/projets")
 	public String createCategorie(@Validated @RequestBody Projet projet) {
 		projetservice.save(projet);

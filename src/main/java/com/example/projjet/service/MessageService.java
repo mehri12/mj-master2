@@ -10,6 +10,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 
@@ -31,6 +32,10 @@ public class MessageService {
         return messageRepository.findByIdEmetteur(id);
     }
 
+    @PostConstruct
+    private void insert(){
+        save(new Message());
+    }
 
 }
 

@@ -26,8 +26,8 @@ public class TacheController {
 
             return tacheRepository.findAll();
         }
-     @GetMapping("/getprojetbyidtache/{id}")
-     public Long getprojetbytacheid(@PathVariable long id){
+     @GetMapping("/getinformbyidtache/{id}")
+     public List<List<String>> getprojetbytacheid(@PathVariable long id){
         return tacheService.findprojetbytache(id);
      }
     @PostMapping("/tache")

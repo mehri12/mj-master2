@@ -20,7 +20,7 @@ public class EmployeeService {
 		return repository.findAll();
 	}
 	public Employee findByName(String nom) {
-		return repository.findByNom(nom).get();
+		return repository.findByNom(nom);
 	}
 	 public List<List<String>> findbyemployeeid(long id){
 		return repository.findByEmployeeId(id);

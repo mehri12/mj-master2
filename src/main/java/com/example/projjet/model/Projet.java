@@ -1,12 +1,18 @@
 package com.example.projjet.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "projet")
 @JsonIgnoreProperties(value = { "taches" })
 public class Projet implements Serializable {
@@ -14,66 +20,18 @@ public class Projet implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String libelle;
+	@OneToOne
+	@JoinColumn(name = "chef_id")
+	private Employee chef_id;
 
-	@ManyToOne
-	@JoinColumn(name = "employee_id")
-	private Employee employee;
-	@OneToMany(mappedBy = "projet")
 
+	@OneToMany(mappedBy = "projet", cascade = CascadeType.ALL)
 	private List<Tache> taches ;
 
 
 
 
-	public long getId() {
-		return id;
-	}
 
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-
-	public String getLibelle() {
-		return libelle;
-	}
-
-
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
-	}
-
-
-
-	public Employee getEmployee() {
-		return employee;
-	}
-
-
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
-
-
-	public Projet(long id, String libelle, long employeeId) {
-		super();
-		this.id = id;
-		this.libelle = libelle;
-		this.employee = new Employee(employeeId, "", 0, "", "", "");
-	}
-
-	public List<Tache> getTaches() {
-		return taches;
-	}
-
-	public void setTaches(List<Tache> taches) {
-		this.taches = taches;
-	}
-
-	public Projet() {
-		super();
-	}
 
 
 }

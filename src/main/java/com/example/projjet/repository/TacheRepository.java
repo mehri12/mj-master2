@@ -13,8 +13,9 @@ import java.util.Optional;
 @Repository
 public interface TacheRepository extends JpaRepository<Tache , Long> {
 
-    @Query(value = " select t.projet_id  from tache t  where  id = :tacheid"  , nativeQuery = true)
-    Long findByTacheId(@Param("tacheid") Long tacheid) ;
+    @Query(value = " select t.nom_tache,t.employee_id,t.projet_id from tache t  where  t.id=:tacheid"
+            , nativeQuery = true)
+    List<List<String>> findByTacheId(@Param("tacheid") Long tacheid) ;
 
 
 

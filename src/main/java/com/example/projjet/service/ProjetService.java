@@ -22,6 +22,9 @@ public class ProjetService {
 	public Projet findByName(String libelle) {
 		return projetRepository.findByLibelle(libelle).get();
 	}
+	public String findprojetbyemployeeid(Long id){
+		return projetRepository.findByProjetId(id);
+	}
 
 	public void delete(long id) {
 

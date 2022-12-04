@@ -17,6 +17,7 @@ public interface ProjetRepository extends JpaRepository<Projet, Long> {
 
     public Optional<Projet> findByLibelle (String libelle);
 
-    @Query(value = " select p.libelle  from projet p  where  id = :employeeid"  , nativeQuery = true)
-    List<List<String>> findByEmployeeId(@Param("employeeid") Long employeeid) ;
+    @Query(value = " select p.libelle,p.chef_id  from projet p where  p.id = :projetid "
+            , nativeQuery = true)
+    String findByProjetId(@Param("projetid") Long projetid) ;
 }

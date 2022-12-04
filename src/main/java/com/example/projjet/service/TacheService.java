@@ -24,7 +24,7 @@ public class TacheService  {
     public Optional<Tache> findById(Long aLong) {
         return repository.findById(aLong);
     }
-     public Long findprojetbytache(Long id){
+     public List<List<String>> findprojetbytache(Long id){
         return repository.findByTacheId(id);
      }
 
